@@ -1,0 +1,25 @@
+{
+  "name": "telesh",
+  "license": "MIT",
+  "version": "0.0.1",
+  "type": "module",
+  "packageManager": "pnpm@9.12.3",
+  "scripts": {
+    "start": "tsx ./src/main.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@mtcute/core": "0.18.0-rc.5",
+    "@mtcute/crypto-node": "0.18.0-rc.5",
+    "@mtcute/dispatcher": "0.18.0-rc.5",
+    "@mtcute/node": "0.18.0-rc.5",
+    "node-schedule": "^2.1.1",
+    "sh": "github:LitterbinCollective/sh"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/node-schedule": "^2.1.7",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
