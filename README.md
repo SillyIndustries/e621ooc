@@ -1,15 +1,12 @@
-# telesh
+# e621ooc
 
-mtcute powered Telegram bot intended for generating Chatsounds
-voice messages on the fly.
+mtcute powered Telegram bot intended for e621 comment shitposting
 
 ## Development
 
 ```bash
 npm i
 cp config.example.json config.json
-# edit .env
+# edit config.json
 npm run start
 ```
-
-*generated with @mtcute/create-bot*
