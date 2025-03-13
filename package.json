@@ -9,10 +9,10 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@mtcute/core": "0.18.0-rc.5",
+    "@mtcute/core": "^0.22.0",
     "@mtcute/crypto-node": "0.18.0-rc.5",
-    "@mtcute/dispatcher": "0.18.0-rc.5",
-    "@mtcute/node": "0.18.0-rc.5",
+    "@mtcute/dispatcher": "^0.22.0",
+    "@mtcute/node": "^0.22.0",
     "node-schedule": "^2.1.1",
     "sh": "github:LitterbinCollective/sh"
   },

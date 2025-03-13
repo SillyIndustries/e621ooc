@@ -1,5 +1,7 @@
 {
   "bot_token": "",
+  "e621_username": "",
+  "e621_token": "",
   "api_id": "",
   "api_hash": "",
   "rule": "",

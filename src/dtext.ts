@@ -1,3 +1,5 @@
+import { e621Token } from './config.js';
+
 export default function transformDText(dtext: string, baseUrl: string = 'https://e621.net'): string {
   const replacements: { [key: string]: string | ((_: string, ...args: any[]) => string) } = {
     '<([^>]+)>': (_, p1) => {
@@ -81,4 +83,30 @@ export default function transformDText(dtext: string, baseUrl: string = 'https:/
   });
 
   return dtext;
+}
+
+const BLOCKQUOTE_REGEX = /(<blockquote[^>]*>.+?)<\/blockquote>/g;
+const BR_REGEX = /<br\s*\/?>/g;
+export async function transformDText2(body: string) {
+  const response = await fetch('https://e621.net/dtext_preview.json', {
+    method: 'post',
+    body: JSON.stringify({ body }),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': e621Token,
+      'User-Agent': 'SillyIndustries/e621ooc',
+    }
+  });
+  const json = await response.json();
+
+  // hacky way of fixing mtcute not accounting for newlines in blockquotes(?)
+  const blockquotes = [...json.html.matchAll(BLOCKQUOTE_REGEX)];
+  for (let i = 0; i < blockquotes.length; i++) {
+    const amountOfNewlines = (blockquotes[i][1].match(BR_REGEX) || []).length;
+    const padding = '<b>' + '‎'.repeat(1 + amountOfNewlines) + '‎</b>';
+    json.html = json.html.replace(blockquotes[i][1], blockquotes[i][1] + padding);
+  }
+
+  return json.html;
 }
